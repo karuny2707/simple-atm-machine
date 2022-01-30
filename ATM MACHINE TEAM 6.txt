@@ -1,0 +1,221 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include<string.h>
+#include<time.h>
+#define user jakewho
+//int main()
+
+
+
+//-----LOGIN PHASE-----
+int pin = 1234;
+char user[20];
+time_t t;   // not a primitive datatype
+
+//intake pin from user
+ readPin()
+{
+
+    while (1) {
+
+        printf("enter pin :");
+        scanf("%d",&pin);
+/*printf("enter username :");
+scanf("%s",user);*/
+        if (pin== 1234 )
+            break;
+        printf("please enter valid pin no\n");
+    }
+
+
+}
+//intake username from user
+void readuser()
+{
+
+    while(2){
+        printf("enter username :");
+scanf("%s",user);
+if (user==jakewho)
+    break;
+printf("please enter valid username");
+    }
+}
+
+//main program
+int main()
+{
+    int option = 0;
+
+    char flag = 'y';
+
+    unsigned long amount = 30000;
+    unsigned long deposit = 0;
+    unsigned long withdraw = 0;
+
+    //read user and pin then proceed
+    readPin();
+    readuser();
+
+    do {
+            //choose from the below options
+        printf("=========== WELCOME TO BLAH BANK ============\n");
+        printf("++++++++++++++ (NO.1 BANK IN INDIA) +++++++++++++\n");
+        printf("BRANCH : STARK BAZAAR\n");
+        printf("\n\n********Welcome to ATM Service**************\n");
+        printf("\t1. Balance Enquiry\n");
+        printf("\t2. Cash Withdrawal\n");
+        printf("\t3. Deposit Amount\n");
+        printf("\t4. No of notes\n");
+        printf("\t5. Account statement\n");
+        printf("\t6. Exit\n");
+        printf("**************************************************\n\n");
+        int note500,note200,note100,note50,r,a,w;
+
+        printf("Enter your choice: ");
+        scanf("%d", &option);
+//using switch to make choices
+        switch (option) {
+            //check balance
+        case 1:
+    printf("========== WELCOME TO BLAH BANK ============\n");
+    printf("+++++++++++(NO.1 BANK IN INDIA)+++++++++++++\n");
+    printf("BRANCH : STARK BAZAAR\n");
+    time_t t;   // not a primitive datatype
+    time(&t);
+    printf("date & time :%s\n", ctime(&t));
+    printf("\nYour current balance is: %lu rs \n", amount);
+    printf("\n");
+    printf("\n       THANK YOU FOR USING OUR ATM\n");
+            break;
+//withdraw money from atm
+        case 2:
+        printf("=========== WELCOME TO BLAH BANK ============\n");
+        printf("++++++++++++++ (NO.1 BANK IN INDIA) +++++++++++++\n");
+        printf("BRANCH : STARK BAZAAR\n");
+         // not a primitive datatype
+    time(&t);
+    printf("date & time :%s", ctime(&t));
+        printf("\nEnter Amount to be withdrawed: \n");
+        scanf("%lu", &withdraw);
+
+            if (withdraw % 100 != 0) {
+                printf("\nEnter amount in muliple of 100\n");
+            }
+            else if (withdraw > amount) {
+                printf("\nInsufficent balance\n");
+            }
+            else {
+                amount = amount - withdraw;
+                printf("\n\nPlease collect your cash\n");
+                printf("\nYour current balance is: %lu\n", amount);
+            }
+            printf("\n");
+            printf("\n     THANK YOU FOR USING OUR ATM\n");
+            break;
+//deposit money to atm
+        case 3:
+    printf("========== WELCOME TO BLAH BANK ============\n");
+    printf("+++++++++++(NO.1 BANK IN INDIA)++++++++++++++\n");
+    printf("BRANCH : STARK BAZAAR\n");
+    time(&t);
+    printf("date & time:%s\n", ctime(&t));
+            printf("\nEnter amount to deposit: ");
+            scanf("%lu", &deposit);
+
+            amount = amount + deposit;
+
+            printf("Your current balance is: %lu", amount);
+            printf("\n");
+            printf("\n     THANK YOU FOR USING OUR ATM\n");
+            break;
+//no of notes to be given
+
+        case 4:
+        printf("=========== WELCOME TO BLAH BANK ============\n");
+     printf("++++++++++++++ (NO.1 BANK IN INDIA) +++++++++++++\n");
+    printf("BRANCH : STARK BAZAAR\n");
+     // not a primitive datatype
+    time(&t);
+    printf("date & time :%s\n", ctime(&t));
+note500=note200=note100=note50=r=0;
+printf("enter the amount to count the number of notes :");
+scanf("%d",&a);
+        if(a>=500){
+        note500=a/500;
+        a-=note500*500;
+    }
+    if(a>=200){
+        note200=a/200;
+        a-=note200*200;
+    }
+    if(a>=100){
+        note100=a/100;
+        a-=note100*100;
+    }
+    if(a>=50){
+        note50=a/50;
+        a-=note50*50;
+    }
+    if(amount>=10);
+    {
+        r=a/10;
+        a=r*10;
+
+    }
+
+    printf("500:%d\n",note500);
+    printf("200:%d\n",note200);
+    printf("100:%d\n",note100);
+    printf("50:%d\n",note50);
+    printf("10:%d\n",r);
+    printf("\n");
+    printf("\n     THANK YOU FOR USING OUR ATM\n");
+    break;
+//account statement
+
+    case 5:
+    printf("=========== WELCOME TO BLAH BANK ============\n");
+    printf("+++++++++++ (NO.1 BANK IN INDIA) +++++++++++++\n");
+    printf("BRANCH : STARK BAZAAR\n");
+     // not a primitive datatype
+    time(&t);
+    printf("date & time :%s\n", ctime(&t));
+    printf("Account holder name: JAKE WHO\n");
+    printf("IFSC CODE : 12345678912124\n");
+    printf("ACCOUNT NO : 3445 4567 2345\n");
+    w=amount+deposit-withdraw;
+    printf("BALANCE AMOUNT : Rs.%d\n",w);
+    if(deposit>0)
+    printf("DEPOSITED AMOUNT : Rs.%ld\n",deposit);
+    else
+    printf("THIS TIME NO MONEY DEPOSITED\n");
+    if(withdraw>0)
+    printf("Withdrawal AMOUNT : Rs.%ld\n",withdraw);
+    else
+    printf("THIS TIME NO MONEY WITHDRAWED\n");
+    printf("\n    THANK YOU FOR USING OUR ATM\n");
+    break;
+
+
+//exit
+        case 6:
+            printf("WE ALWAYS ASSURE FOR YOUR SAFETY AND NEEDS\n");
+            printf("           happy banking\n");
+           printf("\n      THANK YOU FOR USING OUR ATM\n");
+             // not a primitive datatype
+    time(&t);
+           printf("\n date & time :%s", ctime(&t));
+            exit(0);
+            break;
+
+
+        default:
+            printf("\nSelect correct option");
+        }
+    }
+    //calling while to excute the program
+    while (1);
+
+    return 0;
+}
